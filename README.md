@@ -43,4 +43,4 @@ node scripts/prepare-dataset.mjs --dataset=fashion-mnist --count=6000
 ## Credits 
 
 This project was inspired by **Reiinakano's GAN Playground**, which gave me the initial idea for creating an interactive, browser-based playground for diffusion models. 
-A big thank you to Reiinakano for the inspiration. TensorFlow.js definitely gave me a hard time at first, but after a lot of experimentation, I finally got the hang of it. This project is the result of that learning journey.
+A big thank you to Reiinakano for the inspiration. TensorFlow.js definitely gave me a hard time at first, but after a lot of experimentation, I finally got the hang of it.
