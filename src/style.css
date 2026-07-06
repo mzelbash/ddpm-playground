@@ -1,0 +1,190 @@
+:root,
+[data-theme="dark"] {
+  --bg: #121212;
+  --panel: #1e1e1e;
+  --panel-2: #262626;
+  --border: #3a3a3a;
+  --text: #e6e6e6;
+  --muted: #9a9a9a;
+  --accent: #4ea1ff;
+  --accent-text: #06233f;
+  color-scheme: dark;
+}
+
+[data-theme="light"] {
+  --bg: #f4f5f7;
+  --panel: #ffffff;
+  --panel-2: #eef0f3;
+  --border: #d3d7dd;
+  --text: #1b1f24;
+  --muted: #5b6470;
+  --accent: #1a6fd1;
+  --accent-text: #ffffff;
+  color-scheme: light;
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0;
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.4;
+}
+
+#app { max-width: 1400px; margin: 0 auto; padding: 16px; }
+
+.header-row { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+.app-header h1 { margin: 0 0 4px; font-size: 24px; }
+.app-header .subtitle { margin: 0 0 16px; color: var(--muted); }
+
+.theme-picker { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; white-space: nowrap; }
+.theme-picker select {
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 4px 6px;
+  font-size: 12px;
+}
+
+.app-body {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+@media (max-width: 900px) {
+  .app-body { grid-template-columns: 1fr; }
+}
+
+/* Controls */
+.controls {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+  position: sticky;
+  top: 12px;
+}
+.controls h2 { margin: 0 0 8px; font-size: 18px; }
+.control-group { border-top: 1px solid var(--border); padding: 10px 0; }
+.control-group:first-of-type { border-top: none; }
+.control-group h3 { margin: 0 0 8px; font-size: 13px; text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+
+.controls label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 8px;
+  color: var(--text);
+}
+.controls input[type="number"],
+.controls select {
+  width: 100%;
+  margin-top: 3px;
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 5px 6px;
+  font-size: 13px;
+}
+.controls input[type="range"] { width: 100%; margin-top: 3px; }
+.controls input:disabled, .controls select:disabled { opacity: .45; }
+
+.button-row { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+.controls button {
+  flex: 1 1 auto;
+  background: var(--accent);
+  color: var(--accent-text);
+  border: none;
+  border-radius: 4px;
+  padding: 7px 8px;
+  font-size: 13px;
+  font-weight: 600;
+  cursor: pointer;
+}
+.controls button:disabled { background: #333; color: #777; cursor: not-allowed; }
+
+.status {
+  margin-top: 8px;
+  font-size: 12px;
+  color: var(--muted);
+  background: var(--panel-2);
+  border-radius: 4px;
+  padding: 6px 8px;
+  min-height: 30px;
+}
+
+/* Viz panels */
+.viz-panels { display: flex; flex-direction: column; gap: 16px; }
+.panel {
+  background: var(--panel);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 14px;
+}
+.panel h2 { margin: 0 0 4px; font-size: 16px; }
+.panel .hint { margin: 0 0 10px; font-size: 12px; color: var(--muted); }
+
+.forward-strip { display: flex; flex-wrap: wrap; gap: 8px; }
+.forward-frame { display: flex; flex-direction: column; align-items: center; }
+.forward-frame canvas {
+  image-rendering: pixelated;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: #000;
+}
+.forward-label { font-size: 11px; color: var(--muted); margin-top: 3px; }
+
+.loss-chart { width: 100%; height: 180px; display: block; border-radius: 4px; }
+
+.sample-grid { display: grid; gap: 6px; justify-content: start; }
+.sample-cell {
+  image-rendering: pixelated;
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  background: #000;
+}
+
+.backend-note { margin-top: 16px; font-size: 11px; color: var(--muted); }
+
+/* Hover/focus info tooltips on control labels */
+.info-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  margin-left: 4px;
+  border-radius: 50%;
+  background: var(--border);
+  color: var(--text);
+  font-size: 10px;
+  font-style: normal;
+  line-height: 1;
+  cursor: help;
+  position: relative;
+  vertical-align: middle;
+}
+.info-icon:hover::after,
+.info-icon:focus::after {
+  content: attr(data-tip);
+  position: absolute;
+  left: 50%;
+  bottom: 130%;
+  transform: translateX(-50%);
+  background: var(--panel-2);
+  color: var(--text);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 6px 8px;
+  font-size: 11px;
+  line-height: 1.35;
+  width: 210px;
+  white-space: normal;
+  z-index: 20;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, .35);
+}
