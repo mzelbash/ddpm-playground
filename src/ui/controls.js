@@ -110,6 +110,9 @@ export function createControls(containerEl, { onChange, onAction }) {
       <div class="button-row">
         <button id="c-generate" disabled>Generate Samples</button>
       </div>
+      <div class="button-row">
+        <button id="c-export-notebook">Export as Jupyter Notebook</button>${tip('Downloads a Jupyter notebook (.ipynb) with a Python (PyTorch) version of this exact setup: same dataset, schedule, model size, and training settings selected above, plus a cell to install requirements. Meant to be run with a real GPU in Colab or a local Jupyter install, since it will train much faster there than in the browser.')}
+      </div>
       <div id="c-status" class="status">Idle.</div>
     </div>
   `;
@@ -159,6 +162,7 @@ export function createControls(containerEl, { onChange, onAction }) {
   $('#c-resume').addEventListener('click', () => onAction && onAction('resume'));
   $('#c-reset').addEventListener('click', () => onAction && onAction('reset'));
   $('#c-generate').addEventListener('click', () => onAction && onAction('generate'));
+  $('#c-export-notebook').addEventListener('click', () => onAction && onAction('exportNotebook'));
 
   function updateScheduleEnabled() {
     const linear = state.scheduleType === 'linear';

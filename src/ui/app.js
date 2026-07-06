@@ -9,6 +9,7 @@ import { renderForwardStrip } from './forwardStrip.js';
 import { createLossChart } from './lossChart.js';
 import { createSampleGrid } from './sampleGrid.js';
 import { initTheme } from './theme.js';
+import { downloadNotebook } from '../export/notebook.js';
 
 const TIME_EMBED_DIM = 64;
 
@@ -192,6 +193,13 @@ export function mountApp(rootEl) {
     if (action === 'resume') return resumeTraining();
     if (action === 'reset') return resetTraining();
     if (action === 'generate') return generateSamples();
+    if (action === 'exportNotebook') return exportNotebook();
+  }
+
+  function exportNotebook() {
+    const v = currentValues();
+    downloadNotebook(v, `ddpm_playground_${v.datasetId}.ipynb`);
+    controls.setStatus('Downloaded a Jupyter notebook with your current settings.');
   }
 
   // -------------------------------------------------------------------------
