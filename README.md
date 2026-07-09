@@ -43,8 +43,8 @@ node scripts/prepare-dataset.mjs --dataset=mnist --count=6000
 node scripts/prepare-dataset.mjs --dataset=fashion-mnist --count=6000
 ```
 
-## Deployment
 
-This section is only relevant if you have push access to this repo (e.g. you're maintaining your own fork). It doesn't affect using the live demo or running locally.
+## Credits 
 
-Every push to the `main` branch automatically rebuilds the app and redeploys it to GitHub Pages, via the workflow defined in `.github/workflows/deploy.yml`. No manual build/deploy step is needed. If you fork this repo and want your own live copy, you'll need to enable Pages once under **Settings &rarr; Pages &rarr; Build and deployment &rarr; Source: GitHub Actions**.
+This project was inspired by **Reiinakano's GAN Playground**, which gave me the initial idea for creating an interactive, browser-based playground for diffusion models. 
+A big thank you to Reiinakano for the inspiration. TensorFlow.js definitely gave me a hard time at first, but after a lot of experimentation, I finally got the hang of it.
