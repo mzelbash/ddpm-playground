@@ -13,6 +13,10 @@ A hands-on, in-browser playground for teaching Denoising Diffusion Probabilistic
 - Generates new images by running the trained model in reverse, with a choice of DDPM (full ancestral) or DDIM (fast) sampling.
 - Exports the current settings as a runnable Jupyter notebook (PyTorch), so the same setup can be trained with a real GPU in Colab or a local Jupyter install.
 
+## Reference: DDPM vs. DDIM
+
+[docs/ddpm-vs-ddim.md](docs/ddpm-vs-ddim.md) walks through exactly why DDPM and DDIM differ (with the math and the actual sampler code from this repo), backed by a real comparison run on a model trained with this playground's own defaults.
+
 ## Getting started locally
 
 Most people can just use the live demo above. Run it locally instead if you want to modify the code, or use it offline.
